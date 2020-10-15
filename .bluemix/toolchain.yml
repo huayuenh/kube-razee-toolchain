@@ -185,6 +185,8 @@ services:
           $env.pipeline_type === 'tekton' ? false : true
   webide:
     service_id: orion
+  devops-insights:
+    service_id: draservicebroker
 form:
   pipeline:
     parameters:
