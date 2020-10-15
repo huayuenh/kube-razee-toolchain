@@ -48,6 +48,10 @@ spec:
       description: the namespace
     - name: pipeline-debug
       default: "0"
+    - name: pr-url
+      description: pr url
+      default: ""
+    - name: apikey
   workspaces:
     - name: pipeline-ws
   tasks:
