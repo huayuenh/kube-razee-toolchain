@@ -366,11 +366,15 @@ echo "VERIFY RemoteResource deployment changes were applied"
 DEPLOY_CHANGED_IMAGE_YQPATH="spec.template.spec.containers[0].image"
 IMAGE_REPOSITORY="${REGISTRY_URL}/${REGISTRY_NAMESPACE}/${IMAGE_NAME}"
 DEPLOY_IMAGE_EXPECTED_VALUE="${IMAGE_REPOSITORY}"
+echo "DEPLOY_IMAGE_EXPECTED_VALUE $DEPLOY_IMAGE_EXPECTED_VALUE"
+echo "IMAGE_REPOSITORY $IMAGE_REPOSITORY"
+echo "CLUSTER_NAMESPACE $CLUSTER_NAMESPACE"
 # check for 7.5minutes
 for ITER in {1..15}
 do
   echo "Check deployment exists: ${DEPLOYMENT_NAME}"
   FOUND_DEPLOY=$(kubectl get deploy -n "${CLUSTER_NAMESPACE}" --output=yaml | yq r - "items[*].metadata.name" | grep "^- ${DEPLOYMENT_NAME}$" || true )
+  echo "FOUND_DEPLOY $FOUND_DEPLOY"
   if [ ! -z "${FOUND_DEPLOY}" ];
   then
     echo "Deployment ${DEPLOYMENT_NAME} exists."
