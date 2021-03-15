@@ -117,7 +117,7 @@ spec:
             echo "CLUSTER_NAMESPACE $CLUSTER_NAMESPACE"
             echo "REGISTRY_NAMESPACE $REGISTRY_NAMESPACE"
             echo "IMAGE_NAME  $IMAGE_NAME"
-            
+
             GIT_REMOTE_URL=$( git config --get remote.origin.url )
             GIT_USER=$( echo ${GIT_REMOTE_URL} | cut -d/ -f3 | cut -d: -f1 )
             GIT_PASSWORD=$( echo ${GIT_REMOTE_URL} | cut -d: -f3 | cut -d@ -f1 )
@@ -134,7 +134,7 @@ spec:
             CONFIG_REPO_URL=${CONFIG_REPO_URL%".git"}
             echo "CONFIG_REPO_URL $CONFIG_REPO_URL"
             #target deployment region
-            ibmcloud target -r $(CLUSTER_REGION)
+            ibmcloud target -r $CLUSTER_REGION
         - name: script
           value: |
             # uncomment to debug the script
