@@ -146,6 +146,8 @@ spec:
             # image registry (using an IBM Cloud API Key), perform a kubectl deploy of container image and check on outcome.
             echo "STARTING REGISTER SCRIPT"
             export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID
+            export SOURCE_BUILD_NUMBER=$BUILD_NUMBER
+
             echo ""
             source <(curl -sSL "https://raw.githubusercontent.com/huayuenh/kube-razee-toolchain/test/.bluemix/register_app.sh")
         - name: pipeline-debug
