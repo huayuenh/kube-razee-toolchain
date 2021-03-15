@@ -137,6 +137,7 @@ spec:
             printenv
             echo "*****************"
             ibmcloud target -r $CLUSTER_REGION
+            
         - name: script
           value: |
             # uncomment to debug the script
@@ -144,6 +145,8 @@ spec:
             # This script checks the IBM Container Service cluster is ready, has a namespace configured with access to the private
             # image registry (using an IBM Cloud API Key), perform a kubectl deploy of container image and check on outcome.
             echo "STARTING REGISTER SCRIPT"
+            export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID
+            echo ""
             source <(curl -sSL "https://raw.githubusercontent.com/huayuenh/kube-razee-toolchain/test/.bluemix/register_app.sh")
         - name: pipeline-debug
           value: $(params.pipeline-debug)
