@@ -134,6 +134,8 @@ spec:
             CONFIG_REPO_URL=${CONFIG_REPO_URL%".git"}
             echo "CONFIG_REPO_URL $CONFIG_REPO_URL"
             #target deployment region
+            printenv
+            echo "*****************"
             ibmcloud target -r $CLUSTER_REGION
         - name: script
           value: |
