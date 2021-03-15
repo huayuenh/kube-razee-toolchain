@@ -416,6 +416,11 @@ if jq -e '.services[] | select(.service_id=="draservicebroker")' _toolchain.json
   else 
     DEPLOYMENT_ENVIRONMENT="${KUBERNETES_MASTER_ADDRESS}:${CLUSTER_NAMESPACE}"
   fi
+  echo "DOI UPDATE"
+  echo "DEPLOYMENT_ENVIRONMENT $DEPLOYMENT_ENVIRONMENT"
+  echo "SOURCE_BUILD_NUMBER $SOURCE_BUILD_NUMBER"
+  echo "IMAGE_NAME $IMAGE_NAME"
+  echo "STATUS $STATUS"
   ibmcloud doi publishdeployrecord --env $DEPLOYMENT_ENVIRONMENT \
     --buildnumber ${SOURCE_BUILD_NUMBER} --logicalappname ${IMAGE_NAME} --status ${STATUS}
 fi
